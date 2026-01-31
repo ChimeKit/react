@@ -1,0 +1,231 @@
+@import "./styles/components/feed.css";
+@import "./styles/components/bell.css";
+@import "./styles/components/inbox.css";
+@import "./styles/components/preferences.css";
+@import "./styles/components/preferences-dialog.css";
+@import "./styles/components/message-details.css";
+@import "./styles/components/message-details-dialog.css";
+
+:root,
+.chimekit-theme {
+  /* ---------------------------------- */
+  /*  COLORS                            */
+  /* ---------------------------------- */
+
+  --chimekit-color-primary: #2563eb;
+  --chimekit-color-white: #ffffff;
+  --chimekit-color-black: #000000;
+  --chimekit-color-red: #ef4444;
+  --chimekit-color-gray-50: #fafafa;
+  --chimekit-color-gray-100: #f4f4f5;
+  --chimekit-color-gray-200: #e4e4e7;
+  --chimekit-color-gray-300: #d4d4d8;
+  --chimekit-color-gray-400: #a1a1aa;
+  --chimekit-color-gray-500: #71717a;
+  --chimekit-color-gray-600: #52525b;
+  --chimekit-color-gray-700: #3f3f46;
+  --chimekit-color-gray-800: #27272a;
+  --chimekit-color-gray-900: #18181b;
+
+  /* Semantic aliases (for component usage) */
+  --chimekit-bg: var(--chimekit-color-white);
+  --chimekit-fg: var(--chimekit-color-gray-900);
+  --chimekit-muted: var(--chimekit-color-gray-500);
+  --chimekit-border: var(--chimekit-color-gray-200);
+  --chimekit-accent: var(--chimekit-color-primary);
+  --chimekit-accent-fg: var(--chimekit-color-white);
+  --chimekit-bg-subtle: var(--chimekit-color-gray-50);
+  --chimekit-bg-hover: var(--chimekit-color-gray-100);
+
+  /* ---------------------------------- */
+  /*  SPACING                           */
+  /* ---------------------------------- */
+
+  --chimekit-space-0: 0rem;
+  --chimekit-space-0-5: 0.125rem;
+  --chimekit-space-1: 0.25rem;
+  --chimekit-space-2: 0.5rem;
+  --chimekit-space-3: 0.75rem;
+  --chimekit-space-4: 1rem;
+  --chimekit-space-5: 1.25rem;
+  --chimekit-space-6: 1.5rem;
+  --chimekit-space-8: 2rem;
+  --chimekit-space-10: 2.5rem;
+  --chimekit-space-12: 3rem;
+  --chimekit-space-16: 4rem;
+  --chimekit-space-20: 5rem;
+
+  /* Shortcuts for semantic spacing */
+  --chimekit-gap-xs: var(--chimekit-space-1);
+  --chimekit-gap-sm: var(--chimekit-space-2);
+  --chimekit-gap-md: var(--chimekit-space-4);
+  --chimekit-gap-lg: var(--chimekit-space-6);
+
+  /* ---------------------------------- */
+  /*  RADIUS                            */
+  /* ---------------------------------- */
+
+  --chimekit-radius-sm: 0.125rem;
+  --chimekit-radius: 0.375rem;
+  --chimekit-radius-md: 0.5rem;
+  --chimekit-radius-lg: 0.75rem;
+  --chimekit-radius-xl: 1rem;
+  --chimekit-radius-2xl: 1rem;
+  --chimekit-radius-full: 9999px;
+
+  /* ---------------------------------- */
+  /*  SHADOWS                           */
+  /* ---------------------------------- */
+
+  --chimekit-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --chimekit-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --chimekit-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --chimekit-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --chimekit-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* ---------------------------------- */
+  /*  TYPOGRAPHY                       */
+  /* ---------------------------------- */
+
+  --chimekit-font-sans: ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Noto Color Emoji";
+
+  --chimekit-font-size-xxs: 0.625rem;
+  --chimekit-font-size-xs: 0.75rem;
+  --chimekit-font-size-sm: 0.875rem;
+  --chimekit-font-size-base: 1rem;
+  --chimekit-font-size-lg: 1.125rem;
+  --chimekit-font-size-xl: 1.25rem;
+  --chimekit-font-size-2xl: 1.5rem;
+
+  --chimekit-font-weight-normal: 400;
+  --chimekit-font-weight-medium: 500;
+  --chimekit-font-weight-semibold: 600;
+  --chimekit-font-weight-bold: 700;
+
+  --chimekit-leading-tight: 1.25;
+  --chimekit-leading-snug: 1.375;
+  --chimekit-leading-normal: 1.5;
+  --chimekit-leading-relaxed: 1.625;
+
+  /* ---------------------------------- */
+  /*  TRANSITIONS & ANIMATION           */
+  /* ---------------------------------- */
+
+  --chimekit-duration-75: 75ms;
+  --chimekit-duration-100: 100ms;
+  --chimekit-duration-150: 150ms;
+  --chimekit-duration-200: 200ms;
+  --chimekit-duration-300: 300ms;
+
+  --chimekit-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --chimekit-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --chimekit-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---------------------------------- */
+  /*  FOCUS RING                        */
+  /* ---------------------------------- */
+  --chimekit-focus-ring: #3b82f6;
+  --chimekit-focus-ring-offset: 2px;
+}
+
+.dark .chimekit-theme,
+.dark:root {
+  --chimekit-bg: var(--chimekit-color-gray-900);
+  --chimekit-fg: var(--chimekit-color-gray-100);
+  --chimekit-muted: var(--chimekit-color-gray-400);
+  --chimekit-border: var(--chimekit-color-gray-700);
+  --chimekit-accent: var(--chimekit-color-primary);
+  --chimekit-accent-fg: var(--chimekit-color-white);
+  --chimekit-bg-subtle: var(--chimekit-color-gray-800);
+  --chimekit-bg-hover: var(--chimekit-color-gray-700);
+
+  /* Dark mode shadows - increased opacity for visibility */
+  --chimekit-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --chimekit-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4),
+    0 1px 2px -1px rgb(0 0 0 / 0.4);
+  --chimekit-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4),
+    0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --chimekit-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5),
+    0 4px 6px -4px rgb(0 0 0 / 0.5);
+  --chimekit-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5),
+    0 8px 10px -6px rgb(0 0 0 / 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) .chimekit-theme,
+  :root:not(.light) {
+    --chimekit-bg: var(--chimekit-color-gray-900);
+    --chimekit-fg: var(--chimekit-color-gray-100);
+    --chimekit-muted: var(--chimekit-color-gray-400);
+    --chimekit-border: var(--chimekit-color-gray-700);
+    --chimekit-accent: var(--chimekit-color-primary);
+    --chimekit-accent-fg: var(--chimekit-color-white);
+    --chimekit-bg-subtle: var(--chimekit-color-gray-800);
+    --chimekit-bg-hover: var(--chimekit-color-gray-700);
+
+    /* Dark mode shadows - increased opacity for visibility */
+    --chimekit-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --chimekit-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4),
+      0 1px 2px -1px rgb(0 0 0 / 0.4);
+    --chimekit-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4),
+      0 2px 4px -2px rgb(0 0 0 / 0.4);
+    --chimekit-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5),
+      0 4px 6px -4px rgb(0 0 0 / 0.5);
+    --chimekit-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5),
+      0 8px 10px -6px rgb(0 0 0 / 0.5);
+  }
+}
+
+:where([data-chimekit-slot]) {
+  box-sizing: border-box;
+  font-family: var(--chimekit-font-sans);
+  line-height: var(--chimekit-leading-normal);
+  color: var(--chimekit-fg);
+}
+
+:where([data-chimekit-slot]) *,
+:where([data-chimekit-slot])::before,
+:where([data-chimekit-slot])::after {
+  box-sizing: inherit;
+}
+
+:where([data-chimekit-slot]) :where(button, input, select, textarea),
+:where(
+    button[data-chimekit-slot],
+    input[data-chimekit-slot],
+    select[data-chimekit-slot],
+    textarea[data-chimekit-slot]
+  ) {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  margin: 0;
+}
+
+:where([data-chimekit-slot]) :where(button),
+:where(button[data-chimekit-slot]) {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+:where([data-chimekit-slot]) ul,
+:where([data-chimekit-slot]) ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+:where([data-chimekit-slot]) p {
+  margin: 0;
+}

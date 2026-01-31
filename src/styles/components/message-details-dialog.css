@@ -1,0 +1,216 @@
+  @keyframes chimekit-message-details-dialog-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes chimekit-message-details-dialog-fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes chimekit-message-details-dialog-scale-in {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  @keyframes chimekit-message-details-dialog-scale-out {
+    from {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.95);
+    }
+  }
+
+  :is(
+      [data-chimekit-slot="chimekit-message-details-dialog-overlay"],
+      [data-chimekit-slot="chimekit-message-details-dialog-content"]
+    ) {
+    --chimekit-message-details-surface: var(
+      --chimekit-bg,
+      var(--chimekit-color-white)
+    );
+    --chimekit-message-details-border: var(
+      --chimekit-border,
+      var(--chimekit-color-gray-200)
+    );
+    --chimekit-message-details-foreground: var(
+      --chimekit-fg,
+      var(--chimekit-color-gray-900)
+    );
+    --chimekit-message-details-muted: var(
+      --chimekit-muted,
+      var(--chimekit-color-gray-500)
+    );
+  }
+
+  :is([data-chimekit-slot="chimekit-message-details-dialog-overlay"]) {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    z-index: 1500;
+  }
+
+  :is(
+      [data-chimekit-slot="chimekit-message-details-dialog-overlay"][data-state="open"]
+    ) {
+    animation: chimekit-message-details-dialog-fade-in 200ms
+      var(--chimekit-ease-out);
+  }
+
+  :is(
+      [data-chimekit-slot="chimekit-message-details-dialog-overlay"][data-state="closed"]
+    ) {
+    animation: chimekit-message-details-dialog-fade-out 150ms
+      var(--chimekit-ease-in);
+  }
+
+  :is([data-chimekit-slot="chimekit-message-details-dialog-content"]) {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(460px, calc(100vw - 32px));
+    max-height: min(580px, calc(100vh - 48px));
+    background: var(--chimekit-message-details-surface);
+    border: 1px solid var(--chimekit-message-details-border);
+    color: var(--chimekit-message-details-foreground);
+    border-radius: var(--chimekit-radius-xl);
+    box-shadow: var(--chimekit-shadow-xl);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1501;
+  }
+
+  :is(
+      [data-chimekit-slot="chimekit-message-details-dialog-content"][data-state="open"]
+    ) {
+    animation: chimekit-message-details-dialog-scale-in 220ms
+      cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  :is(
+      [data-chimekit-slot="chimekit-message-details-dialog-content"][data-state="closed"]
+    ) {
+    animation: chimekit-message-details-dialog-scale-out 150ms
+      var(--chimekit-ease-in);
+  }
+
+  :is([data-chimekit-slot="chimekit-message-details-dialog-header"]) {
+    padding: var(--chimekit-space-5);
+    border-bottom: 1px solid var(--chimekit-message-details-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--chimekit-space-4);
+    flex-shrink: 0;
+  }
+
+  :is([data-chimekit-slot="chimekit-message-details-dialog-title"]) {
+    font-size: var(--chimekit-font-size-lg);
+    font-weight: var(--chimekit-font-weight-semibold);
+    color: var(--chimekit-message-details-foreground);
+  }
+
+  :is([data-chimekit-slot="chimekit-message-details-dialog-actions"]) {
+    display: flex;
+  }
+
+  :is(
+      [data-chimekit-slot="chimekit-message-details-dialog-icon-button"]
+    ) {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--chimekit-radius-md);
+    border: 1px solid var(--chimekit-message-details-border);
+    background: transparent;
+    color: var(--chimekit-message-details-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color var(--chimekit-duration-150)
+        var(--chimekit-ease-in-out),
+      color var(--chimekit-duration-150) var(--chimekit-ease-in-out);
+  }
+
+  :is(
+      [data-chimekit-slot="chimekit-message-details-dialog-icon-button"]:hover
+    ) {
+    background: var(--chimekit-bg-hover);
+    color: var(--chimekit-message-details-foreground);
+  }
+
+  :is([data-chimekit-slot="chimekit-message-details-dialog-icon-button"] svg) {
+    width: 16px;
+    height: 16px;
+  }
+
+  :is([data-chimekit-slot="chimekit-message-details-dialog-body"]) {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  :is([data-chimekit-slot="chimekit-message-details-dialog-empty"]) {
+    padding: var(--chimekit-space-5);
+    font-size: var(--chimekit-font-size-sm);
+    color: var(--chimekit-message-details-muted);
+  }
+
+  :is([data-chimekit-slot="chimekit-message-details-dialog-footer"]) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--chimekit-space-3);
+    padding: var(--chimekit-space-3) var(--chimekit-space-4);
+    border-top: 1px solid var(--chimekit-message-details-border);
+    background: var(--chimekit-message-details-surface);
+    flex-shrink: 0;
+  }
+
+  :is([data-chimekit-slot="chimekit-message-details-dialog-footer-text"]) {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--chimekit-space-1);
+    font-size: var(--chimekit-font-size-xs);
+    color: var(--chimekit-message-details-muted);
+    text-decoration: none;
+  }
+
+  :is([data-chimekit-slot="chimekit-message-details-dialog-footer-text"]:hover) {
+    color: var(--chimekit-message-details-accent);
+  }
+
+  :is(
+      .dark [data-chimekit-slot="chimekit-message-details-dialog-overlay"],
+      .dark
+        [data-chimekit-slot="chimekit-message-details-dialog-content"],
+      :root:not(.light)
+        [data-chimekit-slot="chimekit-message-details-dialog-overlay"],
+      :root:not(.light)
+        [data-chimekit-slot="chimekit-message-details-dialog-content"]
+    ) {
+    --chimekit-message-details-surface: var(--chimekit-color-gray-900);
+    --chimekit-message-details-border: var(--chimekit-color-gray-700);
+    --chimekit-message-details-foreground: var(--chimekit-color-gray-100);
+    --chimekit-message-details-muted: var(--chimekit-color-gray-400);
+  }

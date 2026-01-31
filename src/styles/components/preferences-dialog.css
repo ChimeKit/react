@@ -1,0 +1,207 @@
+  @keyframes chimekit-preferences-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes chimekit-preferences-fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes chimekit-preferences-scale-in {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  @keyframes chimekit-preferences-scale-out {
+    from {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.95);
+    }
+  }
+
+  :is(
+      [data-chimekit-slot="chimekit-preferences-dialog-overlay"],
+      [data-chimekit-slot="chimekit-preferences-dialog-content"]
+    ) {
+    --chimekit-preferences-surface: var(
+      --chimekit-bg,
+      var(--chimekit-color-white)
+    );
+    --chimekit-preferences-surface-subtle: var(
+      --chimekit-bg-subtle,
+      var(--chimekit-color-gray-50)
+    );
+    --chimekit-preferences-border: var(
+      --chimekit-border,
+      var(--chimekit-color-gray-200)
+    );
+    --chimekit-preferences-foreground: var(
+      --chimekit-fg,
+      var(--chimekit-color-gray-900)
+    );
+    --chimekit-preferences-muted: var(
+      --chimekit-muted,
+      var(--chimekit-color-gray-500)
+    );
+    --chimekit-preferences-control-bg: var(--chimekit-preferences-surface);
+    --chimekit-preferences-control-bg-subtle: var(
+      --chimekit-bg-subtle,
+      var(--chimekit-color-gray-50)
+    );
+    --chimekit-preferences-control-hover: var(
+      --chimekit-bg-hover,
+      var(--chimekit-color-gray-100)
+    );
+    --chimekit-preferences-outline: var(--chimekit-focus-ring, #3b82f6);
+    --chimekit-preferences-outline-offset: var(--chimekit-focus-ring-offset, 2px);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-dialog-overlay"]) {
+    position: fixed;
+    inset: 0;
+    background: var(
+      --chimekit-dialog-overlay,
+      rgba(15, 23, 42, 0.45)
+    );
+    z-index: 1500;
+  }
+
+  :is(
+      [data-chimekit-slot="chimekit-preferences-dialog-overlay"][data-state="open"]
+    ) {
+    animation: chimekit-preferences-fade-in 200ms var(--chimekit-ease-out);
+  }
+
+  :is(
+      [data-chimekit-slot="chimekit-preferences-dialog-overlay"][data-state="closed"]
+    ) {
+    animation: chimekit-preferences-fade-out 150ms var(--chimekit-ease-in);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-dialog-content"]) {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(420px, calc(100vw - 32px));
+    max-height: min(520px, calc(100vh - 64px));
+    background: var(--chimekit-preferences-surface);
+    color: var(--chimekit-preferences-foreground);
+    border-radius: var(--chimekit-radius-lg);
+    border: 1px solid var(--chimekit-preferences-border);
+    box-shadow: var(--chimekit-shadow-xl);
+    overflow-y: auto;
+    z-index: 1501;
+  }
+
+  :is(
+      [data-chimekit-slot="chimekit-preferences-dialog-content"][data-state="open"]
+    ) {
+    animation: chimekit-preferences-scale-in 200ms
+      cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  :is(
+      [data-chimekit-slot="chimekit-preferences-dialog-content"][data-state="closed"]
+    ) {
+    animation: chimekit-preferences-scale-out 150ms var(--chimekit-ease-in);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-header"]) {
+    padding: var(--chimekit-space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--chimekit-space-4);
+    border-bottom: 1px solid var(--chimekit-preferences-border);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-header-left"]) {
+    gap: var(--chimekit-space-2);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-title"]) {
+    font-size: var(--chimekit-font-size-lg);
+    font-weight: var(--chimekit-font-weight-semibold);
+    color: var(--chimekit-preferences-foreground);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-header-actions"]) {
+    gap: var(--chimekit-space-2);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-header-icon-button"]) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: var(--chimekit-radius-md);
+    border: 1px solid var(--chimekit-preferences-border);
+    background: var(--chimekit-preferences-control-bg);
+    color: var(--chimekit-preferences-muted);
+    cursor: pointer;
+    transition: background-color var(--chimekit-duration-150)
+        var(--chimekit-ease-in-out),
+      color var(--chimekit-duration-150) var(--chimekit-ease-in-out);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-header-icon-button"]:hover) {
+    background: var(--chimekit-preferences-control-hover);
+    color: var(--chimekit-preferences-foreground);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-header-icon-button"]) svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  :is(
+      .dark [data-chimekit-slot="chimekit-preferences-dialog-overlay"],
+      .dark [data-chimekit-slot="chimekit-preferences-dialog-content"]
+    ) {
+    --chimekit-preferences-surface: var(--chimekit-color-gray-900);
+    --chimekit-preferences-surface-subtle: var(--chimekit-color-gray-800);
+    --chimekit-preferences-border: var(--chimekit-color-gray-700);
+    --chimekit-preferences-foreground: var(--chimekit-color-gray-100);
+    --chimekit-preferences-muted: var(--chimekit-color-gray-400);
+    --chimekit-preferences-control-bg: var(--chimekit-color-gray-900);
+    --chimekit-preferences-control-bg-subtle: var(--chimekit-color-gray-800);
+    --chimekit-preferences-control-hover: var(--chimekit-color-gray-800);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :is(
+        :root:not(.light) [data-chimekit-slot="chimekit-preferences-dialog-overlay"],
+        :root:not(.light)
+          [data-chimekit-slot="chimekit-preferences-dialog-content"]
+      ) {
+      --chimekit-preferences-surface: var(--chimekit-color-gray-900);
+      --chimekit-preferences-surface-subtle: var(--chimekit-color-gray-800);
+      --chimekit-preferences-border: var(--chimekit-color-gray-700);
+      --chimekit-preferences-foreground: var(--chimekit-color-gray-100);
+      --chimekit-preferences-muted: var(--chimekit-color-gray-400);
+      --chimekit-preferences-control-bg: var(--chimekit-color-gray-900);
+      --chimekit-preferences-control-bg-subtle: var(--chimekit-color-gray-800);
+      --chimekit-preferences-control-hover: var(--chimekit-color-gray-800);
+    }
+  }

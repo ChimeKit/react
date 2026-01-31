@@ -1,0 +1,225 @@
+  :is([data-chimekit-slot="chimekit-preferences-root"]) {
+    --chimekit-preferences-surface: var(
+      --chimekit-bg,
+      var(--chimekit-color-white)
+    );
+    --chimekit-preferences-border: var(
+      --chimekit-border,
+      var(--chimekit-color-gray-200)
+    );
+    --chimekit-preferences-foreground: var(
+      --chimekit-fg,
+      var(--chimekit-color-gray-900)
+    );
+    --chimekit-preferences-muted: var(
+      --chimekit-muted,
+      var(--chimekit-color-gray-500)
+    );
+    --chimekit-preferences-error: var(--chimekit-color-red-600, #dc2626);
+    --chimekit-preferences-success: var(--chimekit-color-green-600, #16a34a);
+    --chimekit-preferences-control-bg: var(--chimekit-preferences-surface);
+    --chimekit-preferences-control-hover: var(
+      --chimekit-bg-hover,
+      var(--chimekit-color-gray-100)
+    );
+    --chimekit-preferences-accent: var(
+      --chimekit-cta,
+      var(--chimekit-preferences-foreground)
+    );
+    --chimekit-preferences-on-accent: var(
+      --chimekit-cta-foreground,
+      var(--chimekit-color-white, #fff)
+    );
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-body"]) {
+    padding: var(--chimekit-space-4);
+    color: var(--chimekit-preferences-foreground);
+    display: flex;
+    flex-direction: column;
+    gap: var(--chimekit-space-4);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-table"]) {
+    border: 1px solid var(--chimekit-preferences-border);
+    border-radius: var(--chimekit-radius-md);
+    overflow: hidden;
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-table-head"]) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 220px);
+    align-items: center;
+    gap: var(--chimekit-space-4);
+    padding: var(--chimekit-space-3) var(--chimekit-space-4);
+    font-size: var(--chimekit-font-size-sm);
+    font-weight: var(--chimekit-font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--chimekit-preferences-muted);
+    background: var(--chimekit-preferences-control-bg);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-table-body"]) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-row"]) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 220px);
+    gap: var(--chimekit-space-4);
+    padding: var(--chimekit-space-4);
+    border-top: 1px solid var(--chimekit-preferences-border);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-category"]) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--chimekit-space-2);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-category-name"]) {
+    font-size: var(--chimekit-font-size-base);
+    font-weight: var(--chimekit-font-weight-medium);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-category-description"]) {
+    font-size: var(--chimekit-font-size-sm);
+    color: var(--chimekit-preferences-muted);
+    line-height: 1.4;
+  }
+
+  :is(
+      [data-chimekit-slot="chimekit-preferences-channel-headings"],
+      [data-chimekit-slot="chimekit-preferences-channel-cells"]
+    ) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(80px, 1fr));
+    gap: var(--chimekit-space-2);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-channel-heading"]) {
+    text-align: center;
+    font-size: var(--chimekit-font-size-xs);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-channel-cell"]) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-checkbox"]) {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--chimekit-preferences-foreground);
+    cursor: pointer;
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-checkbox"]:disabled) {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-footer"]) {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--chimekit-space-3);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-button"]),
+  :is([data-chimekit-slot="chimekit-preferences-button-secondary"]) {
+    border-radius: var(--chimekit-radius-md);
+    padding: var(--chimekit-space-2) var(--chimekit-space-4);
+    font-size: var(--chimekit-font-size-sm);
+    font-weight: var(--chimekit-font-weight-medium);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color var(--chimekit-duration-150)
+        var(--chimekit-ease-in-out),
+      color var(--chimekit-duration-150) var(--chimekit-ease-in-out),
+      border-color var(--chimekit-duration-150) var(--chimekit-ease-in-out);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-button"]) {
+    background: var(--chimekit-accent, var(--chimekit-color-primary));
+    border-color: var(--chimekit-accent, var(--chimekit-color-primary));
+    color: var(--chimekit-accent-fg, var(--chimekit-color-white));
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-button"]:hover):not(
+      :disabled
+    ) {
+    opacity: 0.8;
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-button-secondary"]) {
+    background: transparent;
+    border-color: var(--chimekit-preferences-border);
+    color: var(--chimekit-preferences-foreground);
+  }
+
+  :is(
+      [data-chimekit-slot="chimekit-preferences-button-secondary"]:hover
+    ):not(:disabled) {
+    background: var(--chimekit-preferences-control-hover);
+  }
+
+  :is(
+      [data-chimekit-slot="chimekit-preferences-button"],
+      [data-chimekit-slot="chimekit-preferences-button-secondary"]
+    ):disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-status"]) {
+    font-size: var(--chimekit-font-size-sm);
+    color: var(--chimekit-preferences-muted);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-error"]) {
+    padding: var(--chimekit-space-2) var(--chimekit-space-3);
+    border-radius: var(--chimekit-radius-sm);
+    background: rgba(220, 38, 38, 0.08);
+    color: var(--chimekit-preferences-error);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-success"]) {
+    padding: var(--chimekit-space-2) var(--chimekit-space-3);
+    border-radius: var(--chimekit-radius-sm);
+    background: rgba(22, 163, 74, 0.08);
+    color: var(--chimekit-preferences-success);
+    border: 1px solid rgba(22, 163, 74, 0.2);
+  }
+
+  :is([data-chimekit-slot="chimekit-preferences-empty"]) {
+    padding: var(--chimekit-space-3);
+    border-radius: var(--chimekit-radius-md);
+    background: var(--chimekit-preferences-control-hover);
+    color: var(--chimekit-preferences-muted);
+    text-align: center;
+    font-size: var(--chimekit-font-size-sm);
+  }
+
+  @media (max-width: 540px) {
+    :is([data-chimekit-slot="chimekit-preferences-table-head"]),
+    :is([data-chimekit-slot="chimekit-preferences-row"]) {
+      grid-template-columns: 1fr;
+    }
+
+    :is(
+        [data-chimekit-slot="chimekit-preferences-channel-headings"],
+        [data-chimekit-slot="chimekit-preferences-channel-cells"]
+      ) {
+      grid-template-columns: repeat(2, minmax(60px, 1fr));
+    }
+
+    :is([data-chimekit-slot="chimekit-preferences-footer"]) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }

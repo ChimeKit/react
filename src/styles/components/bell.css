@@ -1,0 +1,84 @@
+  :is([data-chimekit-slot="chimekit-bell"]) {
+    --chimekit-bell-background: transparent;
+    --chimekit-bell-background-hover: var(
+      --chimekit-bg-hover,
+      var(--chimekit-color-gray-100)
+    );
+    --chimekit-bell-foreground: var(
+      --chimekit-fg,
+      var(--chimekit-color-gray-900)
+    );
+    --chimekit-bell-unread-dot-color: var(--chimekit-color-red);
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--chimekit-space-2);
+    background: var(--chimekit-bell-background);
+    color: var(--chimekit-bell-foreground);
+    border: none;
+    border-radius: var(--chimekit-radius-md);
+    cursor: pointer;
+    transition: background-color 150ms ease;
+  }
+
+  :is([data-chimekit-slot="chimekit-bell"]):hover {
+    background: var(--chimekit-bell-background-hover);
+  }
+
+  :is([data-chimekit-slot="chimekit-bell"]) svg {
+    width: var(--chimekit-bell-icon-size, 24px);
+    height: var(--chimekit-bell-icon-size, 24px);
+    flex-shrink: 0;
+  }
+
+  :is([data-chimekit-slot="chimekit-bell"][data-chimekit-size="sm"]) {
+    --chimekit-bell-icon-size: 16px;
+    --chimekit-bell-dot-size: 10px;
+    --chimekit-bell-dot-offset: 6px;
+  }
+
+  :is([data-chimekit-slot="chimekit-bell"][data-chimekit-size="md"]) {
+    --chimekit-bell-icon-size: 24px;
+    --chimekit-bell-dot-size: 14px;
+    --chimekit-bell-dot-offset: 6px;
+  }
+
+  :is([data-chimekit-slot="chimekit-bell"][data-chimekit-size="lg"]) {
+    --chimekit-bell-icon-size: 32px;
+    --chimekit-bell-dot-size: 18px;
+    --chimekit-bell-dot-offset: 6px;
+  }
+
+  :is([data-chimekit-slot="chimekit-bell-unread-dot"]) {
+    position: absolute;
+    top: var(--chimekit-bell-dot-offset, 6px);
+    right: var(--chimekit-bell-dot-offset, 6px);
+    width: var(--chimekit-bell-dot-size, 14px);
+    height: var(--chimekit-bell-dot-size, 14px);
+    background-color: var(--chimekit-bell-unread-dot-color);
+    border-radius: var(--chimekit-radius-full);
+    border: 2px solid var(--chimekit-color-white);
+    z-index: 1;
+  }
+
+  :is(.dark [data-chimekit-slot="chimekit-bell"]) {
+    --chimekit-bell-background-hover: var(--chimekit-color-gray-800);
+    --chimekit-bell-foreground: var(--chimekit-color-gray-100);
+  }
+
+  :is(.dark [data-chimekit-slot="chimekit-bell-unread-dot"]) {
+    border-color: var(--chimekit-color-gray-900);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :is(:root:not(.light) [data-chimekit-slot="chimekit-bell"]) {
+      --chimekit-bell-background-hover: var(--chimekit-color-gray-800);
+      --chimekit-bell-foreground: var(--chimekit-color-gray-100);
+    }
+
+    :is(:root:not(.light) [data-chimekit-slot="chimekit-bell-unread-dot"]) {
+      border-color: var(--chimekit-color-gray-900);
+    }
+  }
