@@ -1,7 +1,7 @@
 {
   "name": "@chimekit/react",
   "version": "0.1.0",
-  "description": "Official React components for ChimeKit in-app notifications",
+  "description": "Official React SDK for ChimeKit",
   "license": "MIT",
   "author": "ChimeKit",
   "homepage": "https://chimekit.com",
